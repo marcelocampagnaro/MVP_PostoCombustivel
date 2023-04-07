@@ -1,0 +1,39 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B66E7DD7-94E8-474D-B718-A19B5479173F}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="frce.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="frce.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="frce">
+        <MSBuild Projects="frce.dproj"/>
+    </Target>
+    <Target Name="frce:Clean">
+        <MSBuild Projects="frce.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="frce:Make">
+        <MSBuild Projects="frce.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="frce;frce"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="frce:Clean;frce:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="frce:Make;frce:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
