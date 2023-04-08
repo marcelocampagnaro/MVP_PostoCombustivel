@@ -68,7 +68,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     Height = 21
     DataField = 'VALOR_COMBUSTIVEL'
     DataSource = dsEdicao
-    TabOrder = 2
+    TabOrder = 4
   end
   object cbTipoCombustivel: TDBLookupComboBox [7]
     Left = 8
@@ -80,11 +80,11 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     KeyField = 'CODIGO'
     ListField = 'DESCRICAO'
     ListSource = dsTipoCombustivel
-    TabOrder = 3
+    TabOrder = 2
   end
   object cbPosto: TDBLookupComboBox [8]
     Left = 8
-    Top = 113
+    Top = 117
     Width = 249
     Height = 21
     DataField = 'CODIGO_POSTO'
@@ -92,7 +92,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     KeyField = 'CODIGO'
     ListField = 'NOME_FANTASIA'
     ListSource = dsPosto
-    TabOrder = 4
+    TabOrder = 3
   end
   inherited dsEdicao: TDataSource
     Left = 392

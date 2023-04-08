@@ -8,7 +8,7 @@ uses
   Vcl.Buttons, Vcl.ExtCtrls, Data.DB, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, unConstantes;
 
 type
   TfrmDefaultEdit = class(TForm)
@@ -51,7 +51,7 @@ begin
   begin
     if (qry.Fields[i].Visible) and (qry.Fields[i].Required) and (qry.Fields[i].IsNull) then
     begin
-      Result := 'Favor preencher o campo ' + qry.Fields[i].DisplayLabel;
+      Result := PreencherCampo + qry.Fields[i].DisplayLabel;
     end;
   end;
 end;

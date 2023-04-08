@@ -15,8 +15,6 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   OldCreateOrder = False
   Position = poMainFormCenter
   OnShow = FormShow
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -49,6 +47,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
     Height = 57
     Align = alTop
     TabOrder = 1
+    ExplicitTop = 4
     object btNovo: TBitBtn
       Left = 1
       Top = 1
@@ -70,6 +69,8 @@ object frmDefaultBrowse: TfrmDefaultBrowse
       ParentFont = False
       TabOrder = 0
       OnClick = btNovoClick
+      ExplicitLeft = -5
+      ExplicitTop = -4
     end
     object btApagar: TBitBtn
       Left = 209
@@ -96,8 +97,10 @@ object frmDefaultBrowse: TfrmDefaultBrowse
         0000FF7FFFBC80000000FF7FFFB980000000FF7FFFB380000000FF7FFFA78000
         0000FF7FFF8F80000000FF00001F80000000}
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 2
       OnClick = btApagarClick
+      ExplicitLeft = 203
+      ExplicitTop = -4
     end
     object btEditar: TBitBtn
       Left = 105
@@ -140,8 +143,10 @@ object frmDefaultBrowse: TfrmDefaultBrowse
         0000FFFFFFFFFFFFFFFFFFFFFFFF00F00FFFF0000000FFFFFFFFFFFFFFFFFFFF
         FFFFF000FFFFF0000000FFFFFFFFFFFFFFFFFFFFFFFFFF0FFFFFF0000000}
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 1
       OnClick = btEditarClick
+      ExplicitLeft = 111
+      ExplicitTop = 6
     end
     object btImprimir: TBitBtn
       Left = 417
@@ -183,7 +188,9 @@ object frmDefaultBrowse: TfrmDefaultBrowse
         00000000007FFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
         0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
+      ExplicitLeft = 423
+      ExplicitTop = 6
     end
     object btFiltar: TBitBtn
       Left = 313
@@ -205,7 +212,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
         23303FFBFE703FFCFC703FFE00703FFFFE703FFFFE703FFFFE703FFF00F03FFF
         7DF03FFF7BF03FFF77F03FFF6FF03FFF5FF03FFF3FF080007FF0}
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btFiltarClick
     end
   end

@@ -66,7 +66,7 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
     Height = 21
     DataField = 'DATA'
     DataSource = dsEdicao
-    TabOrder = 1
+    TabOrder = 2
   end
   object DBEQtdeLitos: TDBEdit [7]
     Left = 8
@@ -75,7 +75,7 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
     Height = 21
     DataField = 'QUANTIDADE_LITROS'
     DataSource = dsEdicao
-    TabOrder = 2
+    TabOrder = 3
     OnExit = DBEQtdeLitosExit
   end
   object DBEValor: TDBEdit [8]
@@ -86,7 +86,7 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
     DataField = 'VALOR'
     DataSource = dsEdicao
     Enabled = False
-    TabOrder = 3
+    TabOrder = 4
   end
   object DBEImposto: TDBEdit [9]
     Left = 8
@@ -96,7 +96,7 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
     DataField = 'VALOR_IMPOSTO'
     DataSource = dsEdicao
     Enabled = False
-    TabOrder = 4
+    TabOrder = 5
   end
   object cbBomba: TDBLookupComboBox [10]
     Left = 8
@@ -108,7 +108,7 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
     KeyField = 'CODIGO'
     ListField = 'DESCRICAO'
     ListSource = dsBomba
-    TabOrder = 5
+    TabOrder = 1
     OnClick = cbBombaClick
   end
   inherited dsEdicao: TDataSource

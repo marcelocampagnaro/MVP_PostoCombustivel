@@ -107,7 +107,7 @@ inherited frmCadastroPostoEdita: TfrmCadastroPostoEdita
   end
   object DBEdit5: TDBEdit [11]
     Left = 8
-    Top = 183
+    Top = 181
     Width = 489
     Height = 21
     DataField = 'CIDADE'

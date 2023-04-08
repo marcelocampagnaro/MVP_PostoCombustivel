@@ -5,8 +5,8 @@ object frmPrincipal: TfrmPrincipal
   Caption = 
     'Fortes Tecnologia - Sistema de Controle de Postos de Combust'#237'vei' +
     's'
-  ClientHeight = 426
-  ClientWidth = 1042
+  ClientHeight = 587
+  ClientWidth = 1012
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,15 +20,17 @@ object frmPrincipal: TfrmPrincipal
   object pnlCenter: TPanel
     Left = 0
     Top = 0
-    Width = 1042
-    Height = 426
+    Width = 1012
+    Height = 587
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 1042
+    ExplicitHeight = 426
     object Image1: TImage
       Left = 1
-      Top = 1
-      Width = 1040
-      Height = 424
+      Top = 97
+      Width = 1010
+      Height = 489
       Align = alClient
       Center = True
       Picture.Data = {
@@ -280,15 +282,20 @@ object frmPrincipal: TfrmPrincipal
       ExplicitLeft = -15
       ExplicitTop = 241
       ExplicitWidth = 1061
+      ExplicitHeight = 424
     end
     object pnlBotoes: TPanel
-      Left = 16
-      Top = 16
-      Width = 1009
+      Left = 1
+      Top = 1
+      Width = 1010
       Height = 96
+      Align = alTop
       Color = clGrayText
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = 16
+      ExplicitTop = 16
+      ExplicitWidth = 1009
       object btCadastroPosto: TBitBtn
         Left = 8
         Top = 8

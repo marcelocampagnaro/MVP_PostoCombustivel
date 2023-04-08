@@ -40,8 +40,13 @@ implementation
 
 procedure TfrmPrincipal.CriarForm(Formulario : TFormClass);
 begin
-  TForm(Formulario) := Formulario.Create(Self);
-  TForm(Formulario).Show
+  try
+    TForm(Formulario) := Formulario.Create(Self);
+    TForm(Formulario).ShowModal;
+  finally
+    if Assigned(TForm(Formulario)) then
+      TForm(Formulario).Free;
+  end;
 end;
 
 procedure TfrmPrincipal.btCadastroTanquesClick(Sender: TObject);

@@ -54,28 +54,32 @@ procedure TfrmDefaultBrowse.btApagarClick(Sender: TObject);
 var
   DeletarRegistro : Boolean;
 begin
-  DeletarRegistro := True;
-  if not qryDados.IsEmpty then
-  begin
-    if not qryDados.FieldByName('CODIGO').IsNull then
+  try
+    DeletarRegistro := True;
+    if not qryDados.IsEmpty then
     begin
-      try
-        qryDados.Delete;
-      except
-        Showmessage('Não é possível deletar o registro, pois o mesmo está vinculado a dados vigentes');
-        DeletarRegistro := False;
-      end;
-
-      if DeletarRegistro then
+      if not qryDados.FieldByName('CODIGO').IsNull then
       begin
-        qryDados.Edit;
-        qryDados.FieldByName('APAGADO').AsString := 'T';
-        qryDados.Post;
-        qryDados.Refresh;
+        try
+          qryDados.Delete;
+        except
+          Showmessage(RegistroVinculado);
+          DeletarRegistro := False;
+        end;
+
+        if DeletarRegistro then
+        begin
+          qryDados.Edit;
+          qryDados.FieldByName('APAGADO').AsString := 'T';
+          qryDados.Post;
+          qryDados.Refresh;
+        end;
       end;
-    end;
-  end else
-    ShowMessage('Nenhum dado para apagar');
+    end else
+      ShowMessage(SemDadosApagar);
+  finally
+    ShowMessage(RegistroDeletado);
+  end;
 end;
 
 procedure TfrmDefaultBrowse.btEditarClick(Sender: TObject);
@@ -83,7 +87,7 @@ begin
   if not qryDados.IsEmpty then
     CriarCadastro(FormCadastro, stEditar)
   else
-    ShowMessage('Nenhum dado para editar');
+    ShowMessage(SemDadosEditar);
 end;
 
 procedure TfrmDefaultBrowse.btFiltarClick(Sender: TObject);
@@ -98,11 +102,21 @@ end;
 
 procedure TfrmDefaultBrowse.CriarCadastro(Formulario : TFormClass; StatusTela : TStatusTela);
 begin
-  TForm(Formulario) := Formulario.Create(Self);
-  TfrmDefaultEdit(Formulario).StatusTela := StatusTela;
-  TfrmDefaultEdit(Formulario).Codigo := qryDados.FieldByName('CODIGO').AsInteger;
-  TForm(Formulario).ShowModal;
-  qryDados.Refresh;
+  try
+    try
+      TForm(Formulario) := Formulario.Create(Self);
+      TfrmDefaultEdit(Formulario).StatusTela := StatusTela;
+      TfrmDefaultEdit(Formulario).Codigo := qryDados.FieldByName('CODIGO').AsInteger;
+      TForm(Formulario).ShowModal;
+      qryDados.Refresh;
+    except
+      on E : Exception do
+        ShowMessage(ErroCriarCadastro + E.Message);
+    end;
+  finally
+    if Assigned(TForm(Formulario)) then
+      TForm(Formulario).Free
+  end;
 end;
 
 procedure TfrmDefaultBrowse.edtBuscaChange(Sender: TObject);
@@ -110,19 +124,24 @@ var
   i : integer;
   Filtro : String;
 begin
-  for i := 0 to qryDados.Fields.Count -1 do
-  begin
-    if qryDados.Fields[i].Visible then
+  try
+    for i := 0 to qryDados.Fields.Count -1 do
     begin
-      if filtro <> EmptyStr then
-        Filtro := Filtro + ' OR ';
+      if qryDados.Fields[i].Visible then
+      begin
+        if filtro <> EmptyStr then
+          Filtro := Filtro + ' OR ';
 
-      Filtro := Filtro + qryDados.Fields[i].FieldName + ' Like ' + QuotedStr('%' + edtBusca.Text + '%');
+        Filtro := Filtro + qryDados.Fields[i].FieldName + ' Like ' + QuotedStr('%' + edtBusca.Text + '%');
+      end;
     end;
+    qryDados.Filtered := False;
+    qryDados.Filter := Filtro;
+    qryDados.Filtered := True;
+  except
+    on E : Exception do
+      ShowMessage(ErroFiltrar + E.Message);
   end;
-  qryDados.Filtered := False;
-  qryDados.Filter := Filtro;
-  qryDados.Filtered := True;
 end;
 
 procedure TfrmDefaultBrowse.FormShow(Sender: TObject);
@@ -142,12 +161,17 @@ end;
 
 procedure TfrmDefaultBrowse.AtualizarPnlMensagem;
 begin
-  if dsLista.DataSet.IsEmpty then
-    pnlMensagem.Caption := NenhumRegistroEncontrado
-  else if dsLista.DataSet.RecordCount = 1 then
-    pnlMensagem.Caption := UmRegistroEncontrado
-  else
-    pnlMensagem.Caption := Format(VariosRegistrosEncontrados, [dsLista.DataSet.RecordCount]);
+  try
+    if dsLista.DataSet.IsEmpty then
+      pnlMensagem.Caption := NenhumRegistroEncontrado
+    else if dsLista.DataSet.RecordCount = 1 then
+      pnlMensagem.Caption := UmRegistroEncontrado
+    else
+      pnlMensagem.Caption := Format(VariosRegistrosEncontrados, [dsLista.DataSet.RecordCount]);
+  except
+    on E : Exception do
+      ShowMessage(ErroAtualizarPainel + E.Message);
+  end;
 end;
 
 end.
