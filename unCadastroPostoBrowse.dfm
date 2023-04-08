@@ -19,15 +19,12 @@ inherited frmCadastroPosto: TfrmCadastroPosto
   end
   inherited Panel5: TPanel
     Width = 857
-    ExplicitLeft = 0
-    ExplicitTop = 0
     ExplicitWidth = 857
     inherited btNovo: TBitBtn
       Font.Name = '@Malgun Gothic'
     end
     inherited btApagar: TBitBtn
       Font.Name = '@Malgun Gothic'
-      ExplicitTop = 6
     end
     inherited btEditar: TBitBtn
       Font.Name = '@Malgun Gothic'
