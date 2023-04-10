@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.VCLUI.Wait, FireDAC.Comp.UI, FireDAC.Phys.IBBase, FireDAC.Comp.Client,
-  Data.DB, VCL.Dialogs, VCL.Forms;
+  Data.DB, VCL.Dialogs, VCL.Forms, unConstantes;
 
 type
   TStatusTela = (stInserir, stEditar);
@@ -50,7 +50,7 @@ begin
   except
     On E : exception do
     begin
-      ShowMessage('Erro ao conectar com o Banco de dados. Verifique os parâmetros.');
+      ShowMessage(ErroConectBD);
       Application.Terminate;
     end;
   end;

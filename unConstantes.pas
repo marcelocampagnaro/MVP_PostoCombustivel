@@ -18,6 +18,7 @@ const
   ErroEditar                 = 'Erro ao editar - ';
   ErroCriarCadastro          = 'Erro ao criar o cadastro - ';
   PreencherCampo             = 'Favor preencher o campo ';
+  ErroConectBD               = 'Erro ao conectar com o Banco de dados. Verifique os parâmetros.';
 
 implementation
 

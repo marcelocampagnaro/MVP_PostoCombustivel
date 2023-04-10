@@ -12,7 +12,6 @@ object dmPrincipal: TdmPrincipal
       'Protocol=TCPIP'
       'CharacterSet=ISO8859_1'
       'DriverID=FB')
-    Connected = True
     Transaction = fdTransaction
     Left = 64
     Top = 72
