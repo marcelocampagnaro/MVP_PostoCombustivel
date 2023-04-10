@@ -5,7 +5,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   BorderStyle = bsDialog
   Caption = 'Default Browse Form'
   ClientHeight = 586
-  ClientWidth = 773
+  ClientWidth = 842
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,14 +20,14 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   object Panel1: TPanel
     Left = 0
     Top = 105
-    Width = 773
+    Width = 842
     Height = 457
     Align = alClient
     TabOrder = 0
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
-      Width = 771
+      Width = 840
       Height = 455
       Align = alClient
       DataSource = dsLista
@@ -39,15 +39,153 @@ object frmDefaultBrowse: TfrmDefaultBrowse
       TitleFont.Name = 'Tahoma'
       TitleFont.Style = []
     end
+    object rlrReport: TRLReport
+      Left = 8
+      Top = 38
+      Width = 794
+      Height = 1123
+      DataSource = dsLista
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = []
+      Visible = False
+      object rlbCabecalho: TRLBand
+        Left = 38
+        Top = 38
+        Width = 718
+        Height = 32
+        BandType = btHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+        object RLSystemInfo1: TRLSystemInfo
+          Left = 3
+          Top = 13
+          Width = 40
+          Height = 17
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Malgun Gothic'
+          Font.Style = []
+          ParentFont = False
+          Text = ''
+          Transparent = False
+        end
+        object RLSystemInfo2: TRLSystemInfo
+          Left = 672
+          Top = 13
+          Width = 43
+          Height = 17
+          Alignment = taRightJustify
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Malgun Gothic'
+          Font.Style = []
+          Info = itHour
+          ParentFont = False
+          Text = ''
+          Transparent = False
+        end
+        object RLLabel1: TRLLabel
+          Left = 163
+          Top = 10
+          Width = 414
+          Height = 17
+          Caption = 
+            'Fortes Tecnologia - Sistema de Controle de Postos de Combust'#237'vei' +
+            's'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Malgun Gothic'
+          Font.Style = []
+          ParentFont = False
+          Transparent = False
+        end
+      end
+      object RLBand2rlbTitulo: TRLBand
+        Left = 38
+        Top = 70
+        Width = 718
+        Height = 35
+        BandType = btTitle
+        object rlTituloRelatorio: TRLLabel
+          Left = 0
+          Top = 0
+          Width = 718
+          Height = 35
+          Align = faClient
+          Alignment = taCenter
+          Caption = 'T'#237'tulo Relat'#243'rio'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Malgun Gothic'
+          Font.Style = [fsBold]
+          ParentFont = False
+          Transparent = False
+        end
+      end
+      object rlbTituloColuna: TRLBand
+        Left = 38
+        Top = 105
+        Width = 718
+        Height = 40
+        BandType = btColumnHeader
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = False
+        Borders.DrawRight = False
+        Borders.DrawBottom = True
+      end
+      object rlbValores: TRLBand
+        Left = 38
+        Top = 145
+        Width = 718
+        Height = 120
+      end
+      object rlbRodape: TRLBand
+        Left = 38
+        Top = 265
+        Width = 718
+        Height = 24
+        BandType = btFooter
+        Borders.Sides = sdCustom
+        Borders.DrawLeft = False
+        Borders.DrawTop = True
+        Borders.DrawRight = False
+        Borders.DrawBottom = False
+        object RLSystemInfo3: TRLSystemInfo
+          Left = 579
+          Top = 5
+          Width = 136
+          Height = 17
+          Alignment = taRightJustify
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Malgun Gothic'
+          Font.Style = []
+          Info = itPageNumber
+          ParentFont = False
+          Text = 'P'#225'gina '
+        end
+      end
+    end
   end
   object Panel5: TPanel
     Left = 0
     Top = 0
-    Width = 773
+    Width = 842
     Height = 57
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 4
     object btNovo: TBitBtn
       Left = 1
       Top = 1
@@ -69,8 +207,6 @@ object frmDefaultBrowse: TfrmDefaultBrowse
       ParentFont = False
       TabOrder = 0
       OnClick = btNovoClick
-      ExplicitLeft = -5
-      ExplicitTop = -4
     end
     object btApagar: TBitBtn
       Left = 209
@@ -99,8 +235,6 @@ object frmDefaultBrowse: TfrmDefaultBrowse
       ParentFont = False
       TabOrder = 2
       OnClick = btApagarClick
-      ExplicitLeft = 203
-      ExplicitTop = -4
     end
     object btEditar: TBitBtn
       Left = 105
@@ -145,8 +279,6 @@ object frmDefaultBrowse: TfrmDefaultBrowse
       ParentFont = False
       TabOrder = 1
       OnClick = btEditarClick
-      ExplicitLeft = 111
-      ExplicitTop = 6
     end
     object btImprimir: TBitBtn
       Left = 417
@@ -189,8 +321,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
         0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
       ParentFont = False
       TabOrder = 4
-      ExplicitLeft = 423
-      ExplicitTop = 6
+      OnClick = btImprimirClick
     end
     object btFiltar: TBitBtn
       Left = 313
@@ -219,7 +350,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   object pnlMensagem: TPanel
     Left = 0
     Top = 562
-    Width = 773
+    Width = 842
     Height = 24
     Align = alBottom
     Alignment = taLeftJustify
@@ -234,7 +365,7 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   object pnlFiltro: TPanel
     Left = 0
     Top = 57
-    Width = 773
+    Width = 842
     Height = 48
     Align = alTop
     TabOrder = 3
@@ -250,14 +381,14 @@ object frmDefaultBrowse: TfrmDefaultBrowse
   end
   object dsLista: TDataSource
     DataSet = qryDados
-    Left = 504
-    Top = 209
+    Left = 624
+    Top = 9
   end
   object qryDados: TFDQuery
     AfterOpen = qryDadosAfterOpen
     FilterOptions = [foCaseInsensitive]
     Connection = dmPrincipal.fdConnection
-    Left = 384
-    Top = 209
+    Left = 568
+    Top = 9
   end
 end

@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Vcl.StdCtrls,
   Vcl.Buttons, Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Grids,
-  Vcl.DBGrids, Vcl.ExtCtrls, System.Types, unDMPrincipal, unDefaultEdit, unConstantes;
+  Vcl.DBGrids, Vcl.ExtCtrls, System.Types, unDMPrincipal, unDefaultEdit, unConstantes,
+  RLReport;
 
 type
 
@@ -27,6 +28,17 @@ type
     pnlMensagem: TPanel;
     pnlFiltro: TPanel;
     edtBusca: TEdit;
+    rlrReport: TRLReport;
+    rlbCabecalho: TRLBand;
+    RLBand2rlbTitulo: TRLBand;
+    rlbTituloColuna: TRLBand;
+    rlbValores: TRLBand;
+    rlbRodape: TRLBand;
+    RLSystemInfo1: TRLSystemInfo;
+    RLSystemInfo2: TRLSystemInfo;
+    RLLabel1: TRLLabel;
+    rlTituloRelatorio: TRLLabel;
+    RLSystemInfo3: TRLSystemInfo;
     procedure btNovoClick(Sender: TObject);
     procedure qryDadosAfterOpen(DataSet: TDataSet);
     procedure FormShow(Sender: TObject);
@@ -34,6 +46,7 @@ type
     procedure btApagarClick(Sender: TObject);
     procedure btFiltarClick(Sender: TObject);
     procedure edtBuscaChange(Sender: TObject);
+    procedure btImprimirClick(Sender: TObject);
   private
     FFormCadastro : TFormClass;
     procedure AtualizarPnlMensagem;
@@ -93,6 +106,12 @@ end;
 procedure TfrmDefaultBrowse.btFiltarClick(Sender: TObject);
 begin
   pnlFiltro.Visible := not pnlFiltro.Visible;
+end;
+
+procedure TfrmDefaultBrowse.btImprimirClick(Sender: TObject);
+begin
+  rlTituloRelatorio.Caption := Self.Caption;
+  rlrReport.Preview;
 end;
 
 procedure TfrmDefaultBrowse.btNovoClick(Sender: TObject);

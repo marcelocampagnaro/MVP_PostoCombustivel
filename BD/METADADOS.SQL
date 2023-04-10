@@ -1,0 +1,195 @@
+SET SQL DIALECT 3;
+
+SET NAMES ISO8859_1;
+
+CREATE DATABASE ':C:\FORTES\FORTES.fdb'
+USER 'SYSDBA' PASSWORD 'masterkey'
+PAGE_SIZE 16384
+DEFAULT CHARACTER SET ISO8859_1;
+
+
+
+/******************************************************************************/
+/***                               Generators                               ***/
+/******************************************************************************/
+
+CREATE GENERATOR GEN_ABASTECIMENTOS_ID;
+SET GENERATOR GEN_ABASTECIMENTOS_ID TO 0;
+
+CREATE GENERATOR GEN_BOMBAS_ID;
+SET GENERATOR GEN_BOMBAS_ID TO 0;
+
+CREATE GENERATOR GEN_POSTOS_ID;
+SET GENERATOR GEN_POSTOS_ID TO 0;
+
+CREATE GENERATOR GEN_TANQUES_ID;
+SET GENERATOR GEN_TANQUES_ID TO 0;
+
+CREATE GENERATOR GEN_TIPOS_COMBUSTIVEIS_ID;
+SET GENERATOR GEN_TIPOS_COMBUSTIVEIS_ID TO 0;
+
+
+
+/******************************************************************************/
+/***                                 Tables                                 ***/
+/******************************************************************************/
+
+
+
+CREATE TABLE ABASTECIMENTOS (
+    CODIGO             INTEGER NOT NULL,
+    DATA               DATE NOT NULL,
+    CODIGO_BOMBA       INTEGER NOT NULL,
+    QUANTIDADE_LITROS  INTEGER NOT NULL,
+    VALOR              FLOAT NOT NULL,
+    VALOR_IMPOSTO      FLOAT NOT NULL,
+    APAGADO            CHAR(1) DEFAULT 'F' NOT NULL
+);
+
+CREATE TABLE BOMBAS (
+    CODIGO         INTEGER NOT NULL,
+    DESCRICAO      VARCHAR(255) NOT NULL,
+    CODIGO_TANQUE  INTEGER NOT NULL,
+    APAGADO        CHAR(1) DEFAULT 'F' NOT NULL
+);
+
+CREATE TABLE POSTOS (
+    CODIGO         INTEGER NOT NULL,
+    RAZAO_SOCIAL   VARCHAR(255) NOT NULL,
+    NOME_FANTASIA  VARCHAR(255) NOT NULL,
+    ENDERECO       VARCHAR(255),
+    NUMERO         INTEGER,
+    CIDADE         VARCHAR(255),
+    UF             CHAR(2),
+    APAGADO        CHAR(1) DEFAULT 'F' NOT NULL
+);
+
+CREATE TABLE TANQUES (
+    CODIGO                   INTEGER NOT NULL,
+    DESCRICAO                VARCHAR(255) NOT NULL,
+    CODIGO_TIPO_COMBUSTIVEL  INTEGER NOT NULL,
+    CODIGO_POSTO             INTEGER NOT NULL,
+    VALOR_COMBUSTIVEL        FLOAT NOT NULL,
+    VALOR_IMPOSTO            FLOAT NOT NULL,
+    APAGADO                  CHAR(1) DEFAULT 'F' NOT NULL
+);
+
+CREATE TABLE TIPOS_COMBUSTIVEIS (
+    CODIGO     INTEGER NOT NULL,
+    DESCRICAO  VARCHAR(255) NOT NULL,
+    APAGADO    CHAR(1) DEFAULT 'F' NOT NULL
+);
+
+
+
+/******************************************************************************/
+/***                              Primary Keys                              ***/
+/******************************************************************************/
+
+ALTER TABLE ABASTECIMENTOS ADD CONSTRAINT PK_ABASTECIMENTOS PRIMARY KEY (CODIGO);
+ALTER TABLE BOMBAS ADD CONSTRAINT PK_BOMBAS PRIMARY KEY (CODIGO);
+ALTER TABLE POSTOS ADD CONSTRAINT PK_POSTOS PRIMARY KEY (CODIGO);
+ALTER TABLE TANQUES ADD CONSTRAINT PK_TANQUES PRIMARY KEY (CODIGO);
+ALTER TABLE TIPOS_COMBUSTIVEIS ADD CONSTRAINT PK_TIPOS_COMBUSTIVEIS PRIMARY KEY (CODIGO);
+
+
+/******************************************************************************/
+/***                              Foreign Keys                              ***/
+/******************************************************************************/
+
+ALTER TABLE ABASTECIMENTOS ADD CONSTRAINT FK_ABASTECIMENTOS_1 FOREIGN KEY (CODIGO_BOMBA) REFERENCES BOMBAS (CODIGO);
+ALTER TABLE BOMBAS ADD CONSTRAINT FK_BOMBAS_1 FOREIGN KEY (CODIGO_TANQUE) REFERENCES TANQUES (CODIGO);
+ALTER TABLE TANQUES ADD CONSTRAINT FK_TANQUES_1 FOREIGN KEY (CODIGO_TIPO_COMBUSTIVEL) REFERENCES TIPOS_COMBUSTIVEIS (CODIGO);
+ALTER TABLE TANQUES ADD CONSTRAINT FK_TANQUES_2 FOREIGN KEY (CODIGO_POSTO) REFERENCES POSTOS (CODIGO);
+
+
+/******************************************************************************/
+/***                                Triggers                                ***/
+/******************************************************************************/
+
+
+SET TERM ^ ;
+
+
+
+/******************************************************************************/
+/***                          Triggers for tables                           ***/
+/******************************************************************************/
+
+
+
+/* Trigger: ABASTECIMENTOS_BI */
+CREATE TRIGGER ABASTECIMENTOS_BI FOR ABASTECIMENTOS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CODIGO IS NULL) THEN
+    NEW.CODIGO = GEN_ID(GEN_ABASTECIMENTOS_ID,1);
+END
+^
+
+/* Trigger: BOMBAS_BI */
+CREATE TRIGGER BOMBAS_BI FOR BOMBAS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CODIGO IS NULL) THEN
+    NEW.CODIGO = GEN_ID(GEN_BOMBAS_ID,1);
+END
+^
+
+/* Trigger: POSTOS_BI */
+CREATE TRIGGER POSTOS_BI FOR POSTOS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CODIGO IS NULL) THEN
+    NEW.CODIGO = GEN_ID(GEN_POSTOS_ID,1);
+END
+^
+
+/* Trigger: TANQUES_BI */
+CREATE TRIGGER TANQUES_BI FOR TANQUES
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CODIGO IS NULL) THEN
+    NEW.CODIGO = GEN_ID(GEN_TANQUES_ID,1);
+END
+^
+
+/* Trigger: TIPOS_COMBUSTIVEIS_BI */
+CREATE TRIGGER TIPOS_COMBUSTIVEIS_BI FOR TIPOS_COMBUSTIVEIS
+ACTIVE BEFORE INSERT POSITION 0
+AS
+BEGIN
+  IF (NEW.CODIGO IS NULL) THEN
+    NEW.CODIGO = GEN_ID(GEN_TIPOS_COMBUSTIVEIS_ID,1);
+END
+^
+
+SET TERM ; ^
+
+
+
+/* Fields descriptions */
+
+DESCRIBE FIELD APAGADO TABLE ABASTECIMENTOS
+'T=APAGADO
+F=ATIVO';
+
+DESCRIBE FIELD APAGADO TABLE BOMBAS
+'T=APAGADO
+F=ATIVO';
+
+DESCRIBE FIELD APAGADO TABLE POSTOS
+'T=APAGADO
+F=ATIVO';
+
+DESCRIBE FIELD APAGADO TABLE TANQUES
+'T=APAGADO
+F=ATIVO';
+
+DESCRIBE FIELD APAGADO TABLE TIPOS_COMBUSTIVEIS
+'T=APAGADO
+F=ATIVO';

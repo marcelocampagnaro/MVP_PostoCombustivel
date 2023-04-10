@@ -8,7 +8,8 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, unConstantes, unCadastroPostoEdit;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, unConstantes, unCadastroPostoEdit,
+  RLReport, RLRichText;
 
 type
   TfrmCadastroPosto = class(TfrmDefaultBrowse)
@@ -20,6 +21,18 @@ type
     qryDadosCIDADE: TStringField;
     qryDadosUF: TStringField;
     qryDadosAPAGADO: TStringField;
+    RLLabel2: TRLLabel;
+    RLLabel3: TRLLabel;
+    RLLabel4: TRLLabel;
+    RLLabel5: TRLLabel;
+    RLLabel6: TRLLabel;
+    RLLabel7: TRLLabel;
+    RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText3: TRLDBText;
+    RLDBText4: TRLDBText;
+    RLDBText5: TRLDBText;
+    RLDBText6: TRLDBText;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

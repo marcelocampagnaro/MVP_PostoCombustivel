@@ -8,13 +8,15 @@ uses
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, unTiposCombustiveisEdit;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, unTiposCombustiveisEdit, RLReport;
 
 type
   TfrmTiposCombustiveis = class(TfrmDefaultBrowse)
     qryDadosCODIGO: TIntegerField;
     qryDadosDESCRICAO: TStringField;
     qryDadosAPAGADO: TStringField;
+    RLLabel2: TRLLabel;
+    RLDBText1: TRLDBText;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }

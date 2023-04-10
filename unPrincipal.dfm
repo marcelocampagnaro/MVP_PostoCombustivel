@@ -24,8 +24,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 587
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1042
-    ExplicitHeight = 426
     object Image1: TImage
       Left = 1
       Top = 97
@@ -279,10 +277,7 @@ object frmPrincipal: TfrmPrincipal
         53FED8D983D655772F745D75423A742F940EDD0BA543F742E9D0BD503A742F94
         0EDD0BA543F742E9D0BD503A742F940EDD0BF5FF18936139FF1EB37300000000
         49454E44AE426082}
-      ExplicitLeft = -15
-      ExplicitTop = 241
-      ExplicitWidth = 1061
-      ExplicitHeight = 424
+      ExplicitTop = 96
     end
     object pnlBotoes: TPanel
       Left = 1
@@ -293,9 +288,6 @@ object frmPrincipal: TfrmPrincipal
       Color = clGrayText
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 16
-      ExplicitTop = 16
-      ExplicitWidth = 1009
       object btCadastroPosto: TBitBtn
         Left = 8
         Top = 8

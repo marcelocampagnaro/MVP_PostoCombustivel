@@ -1,9 +1,9 @@
 inherited frmTanquesEdita: TfrmTanquesEdita
   Caption = 'Tanques'
-  ClientHeight = 247
+  ClientHeight = 313
   ClientWidth = 570
   ExplicitWidth = 576
-  ExplicitHeight = 276
+  ExplicitHeight = 342
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel [0]
@@ -38,10 +38,18 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     Caption = 'Posto'
     FocusControl = DBEdit3
   end
+  object Label1: TLabel [4]
+    Left = 8
+    Top = 191
+    Width = 81
+    Height = 13
+    Caption = 'Valor do Imposto'
+    FocusControl = DBEdit1
+  end
   inherited Panel1: TPanel
-    Top = 196
+    Top = 262
     Width = 570
-    ExplicitTop = 196
+    ExplicitTop = 262
     ExplicitWidth = 570
     inherited btSalvar: TBitBtn
       Left = 357
@@ -52,7 +60,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
       ExplicitLeft = 460
     end
   end
-  object DBEdit3: TDBEdit [5]
+  object DBEdit3: TDBEdit [6]
     Left = 8
     Top = 22
     Width = 553
@@ -61,7 +69,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     DataSource = dsEdicao
     TabOrder = 1
   end
-  object DBEdit4: TDBEdit [6]
+  object DBEdit4: TDBEdit [7]
     Left = 8
     Top = 164
     Width = 134
@@ -70,7 +78,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     DataSource = dsEdicao
     TabOrder = 4
   end
-  object cbTipoCombustivel: TDBLookupComboBox [7]
+  object cbTipoCombustivel: TDBLookupComboBox [8]
     Left = 8
     Top = 70
     Width = 249
@@ -82,7 +90,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     ListSource = dsTipoCombustivel
     TabOrder = 2
   end
-  object cbPosto: TDBLookupComboBox [8]
+  object cbPosto: TDBLookupComboBox [9]
     Left = 8
     Top = 117
     Width = 249
@@ -93,6 +101,15 @@ inherited frmTanquesEdita: TfrmTanquesEdita
     ListField = 'NOME_FANTASIA'
     ListSource = dsPosto
     TabOrder = 3
+  end
+  object DBEdit1: TDBEdit [10]
+    Left = 8
+    Top = 207
+    Width = 134
+    Height = 21
+    DataField = 'VALOR_IMPOSTO'
+    DataSource = dsEdicao
+    TabOrder = 5
   end
   inherited dsEdicao: TDataSource
     Left = 392
@@ -106,6 +123,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
       '  T.CODIGO_POSTO,'
       '  T.DESCRICAO,'
       '  T.VALOR_COMBUSTIVEL,'
+      '  T.VALOR_IMPOSTO,'
       '  T.APAGADO'
       'FROM'
       '  TANQUES T'
@@ -153,6 +171,7 @@ inherited frmTanquesEdita: TfrmTanquesEdita
       FieldName = 'VALOR_COMBUSTIVEL'
       Origin = 'VALOR_COMBUSTIVEL'
       Required = True
+      DisplayFormat = '###,###,##0.00'
     end
     object qryEditAPAGADO: TStringField
       FieldName = 'APAGADO'
@@ -161,6 +180,12 @@ inherited frmTanquesEdita: TfrmTanquesEdita
       Visible = False
       FixedChar = True
       Size = 1
+    end
+    object qryEditVALOR_IMPOSTO: TSingleField
+      DisplayLabel = 'Valor do Imposto'
+      FieldName = 'VALOR_IMPOSTO'
+      Origin = 'VALOR_IMPOSTO'
+      Required = True
     end
   end
   object qryTipoCombustivel: TFDQuery

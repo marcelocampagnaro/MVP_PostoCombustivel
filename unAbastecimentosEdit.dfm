@@ -177,12 +177,14 @@ inherited frmAbastecimentosEdita: TfrmAbastecimentosEdita
       FieldName = 'VALOR'
       Origin = 'VALOR'
       Visible = False
+      DisplayFormat = '###,###,##0.00'
     end
     object qryEditVALOR_IMPOSTO: TSingleField
       DisplayLabel = 'Valor Imposto'
       FieldName = 'VALOR_IMPOSTO'
       Origin = 'VALOR_IMPOSTO'
       Visible = False
+      DisplayFormat = '###,###,##0.00'
     end
     object qryEditAPAGADO: TStringField
       FieldName = 'APAGADO'

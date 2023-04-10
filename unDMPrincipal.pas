@@ -7,7 +7,7 @@ uses
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB,
   FireDAC.VCLUI.Wait, FireDAC.Comp.UI, FireDAC.Phys.IBBase, FireDAC.Comp.Client,
-  Data.DB;
+  Data.DB, VCL.Dialogs, VCL.Forms;
 
 type
   TStatusTela = (stInserir, stEditar);
@@ -35,7 +35,25 @@ implementation
 
 procedure TdmPrincipal.DataModuleCreate(Sender: TObject);
 begin
-  fdConnection.Connected := True;
+  try
+    fdConnection.Params.Clear;
+    fdConnection.Params.Add('Database=C:\FORTES\FORTES.fdb');
+    fdConnection.Params.Add('User_Name=SYSDBA');
+    fdConnection.Params.Add('Password=masterkey');
+    fdConnection.Params.Add('Server=192.168.0.16/3050');
+    fdConnection.Params.Add('Protocol=TCPIP');
+    fdConnection.Params.Add('CharacterSet=ISO8859_1');
+    fdConnection.Params.Add('DriverID=FB');
+
+
+    fdConnection.Connected := True;
+  except
+    On E : exception do
+    begin
+      ShowMessage('Erro ao conectar com o Banco de dados. Verifique os parâmetros.');
+      Application.Terminate;
+    end;
+  end;
 end;
 
 end.

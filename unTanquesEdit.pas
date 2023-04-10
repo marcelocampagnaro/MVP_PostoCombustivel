@@ -34,6 +34,9 @@ type
     dsPosto: TDataSource;
     qryPostoCODIGO: TIntegerField;
     qryPostoNOME_FANTASIA: TStringField;
+    qryEditVALOR_IMPOSTO: TSingleField;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
